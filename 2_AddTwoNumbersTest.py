@@ -6,12 +6,7 @@ class ListNode:
 
 
 class Solution:
-    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
-        if l1.val == 0 and l1.next == None and l2.val == 0 and l2.next == None:
-            return ListNode(0)
-        return self.func(l1, l2)
-
-    def func(self, l1, l2, v3=0):
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode, v3=0) -> ListNode:
         l1 = l1 if l1 else ListNode(0)
         l2 = l2 if l2 else ListNode(0)
         value_m = l1.val + l2.val + v3
@@ -19,7 +14,7 @@ class Solution:
             return None
 
         return ListNode(
-            val=value_m % 10, next=self.func(l1.next, l2.next, value_m // 10)
+            val=value_m % 10, next=self.addTwoNumbers(l1.next, l2.next, value_m // 10)
         )
 
 
